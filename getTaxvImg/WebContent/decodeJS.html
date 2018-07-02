@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript eval</title>
+</head>
+<body>
+
+<div>
+<span>压缩工具：</span><a href="http://dean.edwards.name/packer/" target="_blank">JS Packer</a><br/>
+<span>压缩地址：</span><a href="http://dean.edwards.name/packer/" target="_blank">http://dean.edwards.name/packer/</a>
+</div>
+<textarea id="eval_code" cols="100" rows="30" placeholder="粘贴eval代码"></textarea>
+<button onclick="executeEval()">EVAL</button>
+ 
+<script type="text/javascript">
+    function executeEval(){
+        let evalCodeElt = document.getElementById("eval_code");
+        let evalCode = evalCodeElt.value;
+        // 如果不把开头的eval去掉的话直接执行会被执行两遍
+         evalCode = evalCode.replace(/^eval/, "");
+        try{
+            evalCodeElt.value = eval(evalCode);
+        }catch (e) {
+            alert("执行报错了:" + e);
+        }
+    }
+</script>
+
+
+</body>
+</html>
